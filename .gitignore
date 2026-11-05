@@ -1,0 +1,6 @@
+# Python 虚拟环境（本地才有，不需要上传）
+.venv/
+
+# Python 缓存
+__pycache__/
+*.pyc
