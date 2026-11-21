@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>聊天室</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app" class="app">
+  <!-- 左侧：会话列表 -->
+  <aside id="sidebar" class="sidebar">
+    <header class="side-head">
+      <span class="side-title">聊天室</span>
+      <button id="new-room-btn" class="icon-btn" type="button" title="新建房间">＋</button>
+    </header>
+    <div id="room-list" class="room-list"></div>
+    <footer class="side-me">
+      <button id="my-avatar" class="avatar my-avatar" type="button" title="点击更换头像"></button>
+      <div class="me-text">
+        <div id="my-name" class="me-name"></div>
+        <div class="me-sub">点头像可更换</div>
+      </div>
+    </footer>
+  </aside>
+
+  <!-- 右侧：聊天 -->
+  <main class="main">
+    <header class="chat-head">
+      <button id="back-btn" class="icon-btn back-btn" type="button" title="返回列表">‹</button>
+      <div class="chat-title">
+        <div id="room-name" class="room-name">大厅</div>
+        <div id="room-sub" class="room-sub">在线 —</div>
+      </div>
+      <button id="members-btn" class="icon-btn" type="button" title="在线成员">👥</button>
+    </header>
+
+    <div id="banner" class="banner hidden"></div>
+
+    <section id="chat" class="chat">
+      <div class="top-hint">
+        <button id="load-more" type="button">加载更早消息</button>
+      </div>
+      <div id="messages"></div>
+    </section>
+
+    <button id="jump-btn" class="jump-btn hidden" type="button">回到底部</button>
+
+    <footer class="composer">
+      <button id="photo-btn" class="icon-btn photo-btn" type="button" title="发送照片">＋</button>
+      <div class="input-wrap">
+        <input id="text-input" placeholder="输入消息，回车发送" disabled>
+        <span id="counter" class="counter">0/2000</span>
+      </div>
+      <button id="send-btn" class="send-btn" type="button" disabled>发送</button>
+    </footer>
+  </main>
+</div>
+
+<!-- 在线成员 -->
+<div id="members-panel" class="panel hidden">
+  <div class="panel-head">
+    <span>在线成员 <b id="panel-count"></b></span>
+    <button id="panel-close" class="icon-btn" type="button" title="关闭">✕</button>
+  </div>
+  <div id="member-list" class="member-list"></div>
+  <div class="panel-note">口径：每个浏览器（设备）算 1 人；所有窗口都关了才离线。</div>
+</div>
+
+<!-- 看大图 -->
+<div id="lightbox" class="lightbox hidden"><img id="lightbox-img" alt=""></div>
+
+<!-- 昵称 -->
+<div id="login" class="overlay">
+  <div class="dialog-card">
+    <h2>进入聊天室</h2>
+    <input id="name-input" placeholder="给自己起个昵称（1-20 字）" maxlength="20" autofocus>
+    <div id="login-error" class="dialog-error"></div>
+    <button id="name-btn" class="primary wide" type="button">进入</button>
+  </div>
+</div>
+
+<!-- 新建房间 -->
+<div id="room-dialog" class="overlay hidden">
+  <div class="dialog-card">
+    <h2>新建房间</h2>
+    <input id="room-input" placeholder="房间名（1-20 字）" maxlength="20">
+    <div id="room-error" class="dialog-error"></div>
+    <div class="dialog-actions">
+      <button id="room-cancel" class="ghost" type="button">取消</button>
+      <button id="room-ok" class="primary" type="button">创建</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="photo-input" accept="image/*" hidden>
+<input type="file" id="avatar-input" accept="image/*" hidden>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">聊天室</string>
+
+    <string name="loading_title">正在连接服务器…</string>
+    <string name="loading_hint">如果一直停在这里，说明手机连不到电脑，点返回键可以改地址</string>
+
+    <string name="error_title">连不上服务器</string>
+    <string name="error_hint">请检查：\n1. 手机和电脑连的是同一个 WiFi\n2. 电脑上的聊天室黑窗口还开着\n3. 服务器地址填的是电脑当前 IP（黑窗口里会打印）\n4. Windows 防火墙放行了 9999 端口</string>
+    <string name="error_retry">重试</string>
+    <string name="error_discover">自动查找服务器</string>
+    <string name="error_change_server">修改服务器地址</string>
+
+    <string name="menu_settings">服务器设置</string>
+    <string name="menu_reload">重新加载</string>
+</resources>

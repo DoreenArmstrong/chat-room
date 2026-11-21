@@ -4,3 +4,24 @@
 # Python 缓存
 __pycache__/
 *.pyc
+
+# 运行时数据：SQLite 数据库（删掉就等于清空聊天记录，不需要上传）
+chat.db
+chat.db-wal
+chat.db-shm
+chat.db.*
+
+# 旧版 JSON 数据 + 迁移后的备份
+data.json
+data.json.tmp
+data.json.bad
+data.json.migrated
+
+# 安卓构建工具链（JDK / Android SDK，约 300MB，本机重建即可）
+.toolchain/
+
+# 安卓构建产物（APK 在 android/build 里）
+android/build/
+ 
+# �༭��/���ֲ����ı��ؼƻ��ļ� 
+.zcode/ 
