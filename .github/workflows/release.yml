@@ -1,0 +1,27 @@
+name: release
+
+# 推送 v* 标签时自动创建 GitHub Release，并把 dist 里的 APK 作为附件上传。
+# 这样不需要在本地配置 token，也能让其他人直接下载安装包。
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create release with APK
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/chatroom-v3.apk \
+            --title "聊天室 $GITHUB_REF_NAME" \
+            --notes-file RELEASE_NOTES.md \
+            || gh release upload "$GITHUB_REF_NAME" dist/chatroom-v3.apk --clobber
