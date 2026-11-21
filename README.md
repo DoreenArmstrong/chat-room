@@ -32,6 +32,10 @@
 - **安卓 App**：到 [Releases](../../releases) 下载 `chatroom-v3.apk`（已签名，直接安装）
 - **服务器 + 网页**：克隆本仓库即可，无需安装任何 Python 包
 
+> 推送 `v*` 标签时，`.github/workflows/release.yml` 会自动创建 Release，
+> 并把仓库里的 `dist/chatroom-v3.apk` 作为附件上传。
+> 重新构建 APK 后，把它复制到 `dist/` 一起提交，再打新标签即可。
+
 ## 快速开始（Windows）
 
 1. 安装 Python 3.11+（推荐 [uv](https://github.com/astral-sh/uv)：`uv venv --python 3.11`）
