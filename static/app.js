@@ -423,7 +423,18 @@ function closeLightbox() {
 }
 
 /* ---------------- 滚动 / 未读 ---------------- */
+/**
+ * 聊天区是否真的显示着。
+ * 手机上点「‹」返回房间列表时 .main 被 display:none，聊天区高度变成 0；
+ * 这时 scrollHeight - scrollTop - clientHeight 恒为 0，会被误判成「在底部」，
+ * 于是人在列表页，房间里的新消息却被上报成已读。必须先排除这种情况。
+ */
+function isChatVisible() {
+  return ui.chat.offsetParent !== null && ui.chat.clientHeight > 0;
+}
+
 function isNearBottom() {
+  if (!isChatVisible()) return false;
   return ui.chat.scrollHeight - ui.chat.scrollTop - ui.chat.clientHeight < NEAR_BOTTOM_PX;
 }
 function scrollToBottom() {
@@ -459,6 +470,7 @@ function updateUnread() {
 function maybeReportRead() {
   const rs = currentRoom();
   if (!rs || !store.started) return;
+  if (!isChatVisible()) return;                     // 人在房间列表 / 聊天区隐藏时不算读
   if (document.visibilityState !== 'visible') return;
   if (!isNearBottom()) return;
   const target = rs.latestId;
